@@ -1,0 +1,16 @@
+{
+    "name": "L&S Library",
+    "short_name": "L&S",
+    "start_url": "index.html",
+    "display": "standalone",
+    "background_color": "#fdfdfd",
+    "theme_color": "#ffffff",
+    "orientation": "portrait-primary",
+    "icons": [
+        {
+            "src": "/img/icon/icon.png",
+            "type": "image/png",
+            "sizes": "501x498"
+        }
+    ]
+}
