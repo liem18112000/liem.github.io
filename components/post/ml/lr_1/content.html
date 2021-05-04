@@ -4,134 +4,117 @@
 
 			<!-- Main content -->
 			<div class="row">
+
 				<div class="col-lg-8 col-md-10 mx-auto">
-					<p>Artificial intelligence (AI) refers to the simulation of human intelligence in machines that are programmed to think
-					like humans and mimic their actions. The term may also be applied to any machine that exhibits traits associated with a
-					human mind such as learning and problem-solving.</p>
+					<p>Linear regression attempts to model the relationship between two variables by fitting a linear equation to observed
+					data. One variable is considered to be an explanatory variable, and the other is considered to be a dependent variable.
+					For example, a modeler might want to relate the weights of individuals to their heights using a linear regression model.</p>
 
 					<a href="#">
-						<img class="img-fluid" src="img/ml1_4.gif" alt="">
+						<img class="img-fluid" src="https://eleijonmarck.dev/8a25f3ea757821016127cb80936c939f/linear_regression_error.gif" alt="">
 					</a>
 
-					<p>The ideal characteristic of artificial intelligence is its ability to rationalize and take actions that have the best
-					chance of achieving a specific goal.
+					<p>Before attempting to fit a linear model to observed data, a modeler should first determine whether or not there is a
+					relationship between the variables of interest. This does not necessarily imply that one variable causes the other (for
+					example, higher SAT scores do not cause higher college grades), but that there is some significant association between
+					the two variables. A scatterplot can be a helpful tool in determining the strength of the relationship between two
+					variables. If there appears to be no association between the proposed explanatory and dependent variables (i.e., the
+					scatterplot does not indicate any increasing or decreasing trends), then fitting a linear regression model to the data
+					probably will not provide a useful model. A valuable numerical measure of association between two variables is the
+					correlation coefficient, which is a value between -1 and 1 indicating the strength of the association of the observed
+					data for the two variables.
 					</p>
 
-					<p>A subset of artificial intelligence is machine learning, which refers to the concept that computer programs can
-					automatically learn from and adapt to new data without being assisted by humans.</p>
+					<p>A linear regression line has an equation of the form Y = a + bX, where X is the explanatory variable and Y is the
+					dependent variable. The slope of the line is b, and a is the intercept (the value of y when x = 0).</p>
 
-					<p>Deep learning techniques enable this automatic learning through the absorption of huge amounts of unstructured data such
-					as text, images, or video.</p>
+					<h2 class="section-heading">Least-Squares Regression</h2>
 
-					<a href="#">
-						<img class="img-fluid" src="img/ml1_3.gif" alt="">
-					</a>
-					<span class="caption text-muted">The scope of A.I, M.L and D.L</span>
+					<p>The most common method for fitting a regression line is the method of least-squares. This method calculates the
+					best-fitting line for the observed data by minimizing the sum of the squares of the vertical deviations from each data
+					point to the line (if a point lies on the fitted line exactly, then its vertical deviation is 0). Because the deviations
+					are first squared, then summed, there are no cancellations between positive and negative values.</p>
 
-					<h5>Key definitions : </h5>
+					<h5>Example</h5>
 
-					<ul>
-						<li>
-							Artificial intelligence refers to the simulation of human intelligence in machines.
-						</li>
-						<li>
-							The goals of artificial intelligence include learning, reasoning, and perception.
-						</li>
-						<li>
-							AI is being used across different industries including finance and healthcare.
-						</li>
-						<li>
-							Weak AI tends to be simple and single-task oriented, while strong AI carries on tasks that are more complex and
-							human-like.
-						</li>
-					</ul>
+					<p>The dataset "Televisions, Physicians, and Life Expectancy" contains, among other variables, the number of people per
+					television set and the number of people per physician for 40 countries. Since both variables probably reflect the level
+					of wealth in each country, it is reasonable to assume that there is some positive association between them. After
+					removing 8 countries with missing values from the dataset, the remaining 32 countries have a correlation coefficient of
+					0.852 for number of people per television set and number of people per physician. The r² value is 0.726 (the square of
+					the correlation coefficient), indicating that 72.6% of the variation in one variable may be explained by the other.
+					(Note: see correlation for more detail.) Suppose we choose to consider number of people per television set as the
+					explanatory variable, and number of people per physician as the dependent variable. Using the MINITAB "REGRESS" command
+					gives the following results:</p>
 
-					<h2 class="section-heading">Understanding Artificial Intelligence</h2>
+					<p><b>The regression equation is People.Phys. = 1019 + 56.2 People.Tel.</b></p>
 
-					<p>When most people hear the term artificial intelligence, the first thing they usually think of is robots. That's because
-					big-budget films and novels weave stories about human-like machines that wreak havoc on Earth. But nothing could be
-					further from the truth.</p>
+					<div class="col-12 text-center">
+						<img class="img-fluid" src="http://www.stat.yale.edu/Courses/1997-98/101/lsline.gif" alt="">
+					</div>
+					
+					<span class="caption text-muted">Data source: The World Almanac and Book of Facts 1993 (1993), New York: Pharos Books. Dataset available through the JSE
+					Dataset Archive.</span>
 
-					<p>Artificial intelligence is based on the principle that human intelligence can be defined in a way that a machine can
-					easily mimic it and execute tasks, from the most simple to those that are even more complex. The goals of artificial
-					intelligence include mimicking human cognitive activity. Researchers and developers in the field are making surprisingly
-					rapid strides in mimicking activities such as learning, reasoning, and perception, to the extent that these can be
-					concretely defined. Some believe that innovators may soon be able to develop systems that exceed the capacity of humans
-					to learn or reason out any subject. But others remain skeptical because all cognitive activity is laced with value
-					judgments that are subject to human experience.</p>
+					<!-- <blockquote class="blockquote">Algorithms often play a very important part in the structure of artificial intelligence, where simple algorithms are
+					used in simple applications, while more complex ones help frame strong artificial intelligence.</blockquote> -->
 
-					<a href="#">
-						<img class="img-fluid" src="img/ml1_5.gif" alt="">
-					</a>
+					<h2 class="section-heading">Outliers and Influential Observations</h2>
 
-					<blockquote class="blockquote">Algorithms often play a very important part in the structure of artificial intelligence, where simple algorithms are
-					used in simple applications, while more complex ones help frame strong artificial intelligence.</blockquote>
+					<p>After a regression line has been computed for a group of data, a point which lies far from the line (and thus has a
+					large residual value) is known as an outlier. Such points may represent erroneous data, or may indicate a poorly fitting
+					regression line. If a point lies far from the other data in the horizontal direction, it is known as an influential
+					observation. The reason for this distinction is that these points have may have a significant impact on the slope of the
+					regression line. Notice, in the above example, the effect of removing the observation in the upper right corner of the
+					plot:</p>
 
-					<p>As technology advances, previous benchmarks that defined artificial intelligence become outdated. For example, machines
-					that calculate basic functions or recognize text through optical character recognition are no longer considered to
-					embody artificial intelligence, since this function is now taken for granted as an inherent computer function.</p>
+					<div class ="col-12 text-center">
+						<img class="img-fluid" src="http://www.stat.yale.edu/Courses/1997-98/101/lsline2.gif" alt="">
+					</div>
 
+					<p>With this influential observation removed, the regression equation is now</p>
+
+					<p><b>People.Phys = 1650 + 21.3 People.Tel.</b></p>
 
 					<p>
-						AI is continuously evolving to benefit many different industries. Machines are wired using a cross-disciplinary approach
-						based on mathematics, computer science, linguistics, psychology, and more.
+						The correlation between the two variables has dropped to 0.427, which reduces the r² value to 0.182. With this
+						influential observation removed, less that 20% of the variation in number of people per physician may be explained by
+						the number of people per television. Influential observations are also visible in the new model, and their impact should
+						also be investigated.
 					</p>
 
-					<h2 class="section-heading">Applications of Artificial Intelligence</h2>
-
-					<p>The applications for artificial intelligence are endless. The technology can be applied to many different sectors and
-					industries. AI is being tested and used in the healthcare industry for dosing drugs and different treatment in patients,
-					and for surgical procedures in the operating room.</p>
-
-					<a href="#">
-						<img class="img-fluid" src="img/ml1_2.gif" alt="">
-					</a>
-					<span class="caption text-muted">To go places and do things that have never been done before – that’s
-						what living is all about.</span>
-
-					<p>Artificial intelligence also has applications in the financial industry, where it is used to detect and flag activity in
-					banking and finance such as unusual debit card usage and large account deposits—all of which help a bank's fraud
-					department. Applications for AI are also being used to help streamline and make trading easier. This is done by making
-					supply, demand, and pricing of securities easier to estimate.</p>
-
-					<h2 class="section-heading">Categorization of Artificial Intelligence</h2>
-
-					<p>Artificial intelligence can be divided into two different categories: weak and strong. Weak artificial intelligence
-					embodies a system designed to carry out one particular job. Weak AI systems include video games such as the chess
-					example from above and personal assistants such as Amazon's Alexa and Apple's Siri. You ask the assistant a question, it
-					answers it for you.</p>
+					<h2 class="section-heading">Residuals</h2>
 
 					<p>
-						Strong artificial intelligence systems are systems that carry on the tasks considered to be human-like. These tend to be
-						more complex and complicated systems. They are programmed to handle situations in which they may be required to problem
-						solve without having a person intervene. These kinds of systems can be found in applications like self-driving cars or
-						in hospital operating rooms.
+					Once a regression model has been fit to a group of data, examination of the residuals (the deviations from the fitted
+					line to the observed values) allows the modeler to investigate the validity of his or her assumption that a linear
+					relationship exists. Plotting the residuals on the y-axis against the explanatory variable on the x-axis reveals any
+					possible non-linear relationship among the variables, or might alert the modeler to investigate lurking variables. In
+					our example, the residual plot amplifies the presence of outliers.
 					</p>
 
-					<h2 class="section-heading">Special Considerations</h2>
+					<div class="col-12 text-center">
+						<img class="img-fluid" src="http://www.stat.yale.edu/Courses/1997-98/101/lsresid.gif" alt="">
+					</div>
+
+					<h2 class="section-heading">Lurking Variables</h2>
 
 					<p>
-						Since its beginning, artificial intelligence has come under scrutiny from scientists and the public alike. One common
-						theme is the idea that machines will become so highly developed that humans will not be able to keep up and they will
-						take off on their own, redesigning themselves at an exponential rate.
+						If non-linear trends are visible in the relationship between an explanatory and dependent variable, there may be other
+						influential variables to consider. A lurking variable exists when the relationship between two variables is
+						significantly affected by the presence of a third variable which has not been included in the modeling effort. Since
+						such a variable might be a factor of time (for example, the effect of political or economic cycles), a time series plot
+						of the data is often a useful tool in identifying the presence of lurking variables.
 					</p>
 
-					<p>
-						Another is that machines can hack into people's privacy and even be weaponized. Other arguments debate the ethics of
-						artificial intelligence and whether intelligent systems such as robots should be treated with the same rights as humans.
-					</p>
+					<h2 class="section-heading">Extrapolation</h2>
 
 					<p>
-						Self-driving cars have been fairly controversial as their machines tend to be designed for the lowest possible risk and
-						the least casualties. If presented with a scenario of colliding with one person or another at the same time, these cars
-						would calculate the option that would cause the least amount of damage.
-					</p>
-
-					<p>
-						Another contentious issue many people have with artificial intelligence is how it may affect human employment. With many
-						industries looking to automate certain jobs through the use of intelligent machinery, there is a concern that people
-						would be pushed out of the workforce. Self-driving cars may remove the need for taxis and car-share programs, while
-						manufacturers may easily replace human labor with machines, making people's skills more obsolete.
+						Whenever a linear regression model is fit to a group of data, the range of the data should be carefully observed.
+						Attempting to use a regression equation to predict values outside of this range is often inappropriate, and may yield
+						incredible answers. This practice is known as extrapolation. Consider, for example, a linear model which relates weight
+						gain to age for young children. Applying such a model to adults, or even teenagers, would be absurd, since the
+						relationship between age and weight gain is not consistent for all age groups.
 					</p>
 
 					<hr/>
@@ -139,33 +122,17 @@
 					<h4>Reffernce</h4>
 
 					<a 
-					href='https://www.investopedia.com/terms/a/artificial-intelligence-ai.asp#:~:text=Artificial%20intelligence%20(AI)%20refers%20to,as%20learning%20and%20problem%2Dsolving.' target='_blank'>FRANKENFIELD, JAKE. (2021, March 8). Artificial intelligence (AI).</a>
+					href='http://www.stat.yale.edu/Courses/1997-98/101/linreg.htm' target='_blank'>http://www.stat.yale.edu/Courses/1997-98/101/linreg.htm</a>
 
 					<hr />
-				</div>
-			</div>
-
-			<!-- Related Projects Row -->
-			<div class="col-lg-8 col-md-10 mx-auto">
-
-				<div class="row">
-					<div class="col-md-6 col-sm-6 mb-4">
-						<a href="#">
-							<img class="img-fluid" src="img/ai.gif" alt="">
-						</a>
-						<h5>What is Artificial Intelligence</h5>
+					
+					<!-- Pager -->
+					<div class="clearfix">
+						<a class="btn btn-primary btn-block" href="#" onclick='changePage("post/ml")'>Back &rarr;</a>
 					</div>
-				
-					<div class="col-md-6 col-sm-6 mb-4">
-						<a href="#">
-							<img class="img-fluid" src="img/ai.gif" alt="">
-						</a>
-						<h5>What is Artificial Intelligence</h5>
-					</div>
-				
 				</div>
 				
-				<!-- /.row -->
 			</div>
+
 		</div>
 	</article>
